@@ -26,6 +26,43 @@ async openNews() {
     await expect(this.page).toHaveURL(/naujienos/);
 }
 
+async openExams() {
+    await this.page.locator('.link_holder > a').first().click();
+    await expect(this.page).toHaveURL(/egzaminai/);
+}
 
+async openLicenses() {
+    await this.page.locator('div:nth-child(2) > .link_holder > a').click();
+    await expect(this.page).toHaveURL(/vairuotojo-pazymejimai-2/);
+}
+
+async openVehicles() {
+    await this.page.locator('div:nth-child(3) > .link_holder > a').click();
+    await expect(this.page).toHaveURL(/transporto-priemones/);
+}
+
+
+async youtubeLink() {
+    await this.page.locator('a.social').first().click();
+    const page1Promise = this.page.waitForEvent('popup');
+  const page1 = await page1Promise;
+  await page1.getByRole('button', { name: 'Reject all' }).click();
+  await expect(page1).toHaveURL(/regitraLTvideo/);
+}
+
+async facebookLink() {
+    await this.page.locator('a.social').nth(1).click();
+    const page1Promise = this.page.waitForEvent('popup');
+    const page1 = await page1Promise;
+    await expect(page1).toHaveURL(/Regitraa/);
+
+}
+
+async instagramLink() {
+    await this.page.locator('a.social').nth(2).click();
+    const page1Promise = this.page.waitForEvent('popup');
+    const page1 = await page1Promise;
+    await expect(page1).toHaveURL(/regitra_official/);
+}
 
 }
