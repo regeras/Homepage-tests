@@ -24,6 +24,7 @@ async openServices() {
 async openNews() {
     await this.page.locator('div:nth-child(2) > a').first().click();
     await expect(this.page).toHaveURL(/naujienos/);
+//opens the next visible button and checks that url changed.
 }
 
 async openExams() {
@@ -40,6 +41,7 @@ async openVehicles() {
     await this.page.locator('div:nth-child(3) > .link_holder > a').click();
     await expect(this.page).toHaveURL(/transporto-priemones/);
 }
+//all the above simply click a button that redirects the user and checks if it redirected successfully.
 
 
 async youtubeLink() {
@@ -49,6 +51,7 @@ async youtubeLink() {
   await page1.getByRole('button', { name: 'Reject all' }).click();
   await expect(page1).toHaveURL(/regitraLTvideo/);
 }
+
 
 async facebookLink() {
     await this.page.locator('a.social').nth(1).click();
@@ -64,5 +67,5 @@ async instagramLink() {
     const page1 = await page1Promise;
     await expect(page1).toHaveURL(/regitra_official/);
 }
-
+//this code locates the socials buttons, clicks the first, the second, and third, waits for a new page to open and checks the URL.
 }
